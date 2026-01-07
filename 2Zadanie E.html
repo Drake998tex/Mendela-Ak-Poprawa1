@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #count{
+            border: 1px solid black;
+            width: 100px;
+            height: 100px;
+            margin: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: xx-large;
+            font-family: monospace;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <label>Wpisz liczbę: </label>
+    <input type="text" id="num">
+    <button id="start">Start</button>
+    <div id="count">0</div>
+    <script>
+        const start = document.getElementById("start");
+        const par = document.createElement("p");
+        const count = document.getElementById("count");
+        par.innerText="Podaj liczbę dodatnią";
+        start.addEventListener("click", function(){
+            const num = parseInt(document.getElementById("num").value);
+            if(num>0){
+            if(document.body.contains(par)){document.body.removeChild(p);}
+            console.log(num);
+            let now = Date.now();
+            let sec = num*1000;
+            function timer(){
+                let until = now+sec-Date.now();
+                console.log("until: "+until);
+                    let left = Math.abs(Math.round(until/1000));
+                    count.innerText=left;
+                if(until <=0){
+                    return;
+                }
+                requestAnimationFrame(timer);
+            }
+            timer();
+            }else{
+            document.body.appendChild(par);
+            }
+        });
+    </script>
+</body>
+</html>

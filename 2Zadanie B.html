@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+            margin: 50px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <button id="random">Randomizuj</button>
+    <div id="container">
+
+    </div>
+    <script>
+        const random = document.getElementById("random");
+        const cont = document.getElementById("container");
+        let interval;
+        random.addEventListener("click", function(){
+            cont.innerHTML="";
+        for(i=0;i<10;i++){
+            const ball = document.createElement("div");
+            let size = Math.max(10, Math.round(Math.random()*30-2));
+            let left = Math.round(Math.random()*(500-size-2));
+            let top = Math.round(Math.random()*(500-size-2));
+            ball.className = "ball"
+            ball.style.border = "1px solid black";
+            ball.style.borderRadius = "100%"
+            ball.style.width = size+"px";
+            ball.style.height = size+"px";
+            ball.style.position = "absolute";
+            ball.style.left = left+"px";
+            ball.style.top = top+"px";
+            cont.appendChild(ball)
+
+            let perm = true;
+        ball.addEventListener("click", function(){
+            clearInterval(ball.interval);
+            ball.interval = setInterval(()=>{
+                if(perm==true){
+                top+=1
+                ball.style.top = top+"px";
+                if(top>=500-size-2){clearInterval(ball.interval); perm=false;}
+                }
+            },5);
+        });
+        }
+
+        });
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div id="pole">
+    </div>
+
+    <script>
+        const pole = document.getElementById("pole");
+        const image = document.getElementsByTagName("img");
+        let timeout; 
+        let imgs=[];
+        console.log(random())
+        for(i=0;i<3;i++){
+            const img = document.createElement("img")
+            img.style.margin = "5px"
+            img.style.height = "50px";
+            img.j=random();
+            img.src = "./cyferki/c"+img.j+".gif"
+            imgs.push(img);
+            pole.appendChild(img);
+            console.log(imgs)
+            img.addEventListener("click", function(){
+                img.j++;
+                if(img.j>3){img.j=1;}
+                img.src = "./cyferki/c"+img.j+".gif"
+                
+                if(imgs[0].j== "3" && imgs[1].j== "1" && imgs[2].j== "3"){
+                    timeout = setTimeout(gitalert, 30)
+                }
+            });
+        }
+    function gitalert(){
+        alert("Poprawny kod!")
+    }
+    function random(){
+        return Math.max(1, Math.round(Math.random()*3));
+         
+    }
+    </script>
+</body>
+</html>

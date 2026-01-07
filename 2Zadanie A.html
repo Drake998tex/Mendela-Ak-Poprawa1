@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    
+
+    <script>
+        function fiboDesc(n){
+        let a=0;
+        let b=1;
+        let c;
+        let fib=[a,b];
+        let descfib=[];
+        for(i=0;i<n-2;i++){
+            c=a+b;
+            fib.push(c)
+            a=b;
+            b=c
+            console.log(c)
+            console.log(fib)
+        }
+        for(i=fib.length-1;i>=0;i--){
+            descfib.push(fib[i]);
+            console.log(descfib);
+        }
+        document.write(descfib)
+        }
+
+        fiboDesc(10)
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #space{
+        border: 3px solid black;
+        width: 500px;
+        height: 500px;
+        margin: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+        .box{
+        border: 1px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <label>Podaj liczbę N: </label>
+    <input type="number" id="num">
+    <button id="gen">Generuj</button>
+    <div id="space"></div>
+    <script>
+        const space = document.getElementById("space");
+        const num = document.getElementById("num");
+        const gen = document.getElementById("gen");
+       gen.addEventListener("click", function(){
+            space.innerHTML="";
+            let parent = space;
+            for(i=0;i<num.value;i++){
+            const box = document.createElement("div");
+            box.className="box";
+            let size=sizer();
+            const ph=parent.clientHeight;
+            const pw=parent.clientWidth;
+            box.style.height=ph*size+"px";
+            box.style.width=pw*size+"px";
+            parent.appendChild(box);
+            parent =box;
+            box.addEventListener("mouseover", function(e){
+                e.stopPropagation();
+                this.style.backgroundColor=color();    
+            });
+            box.addEventListener("mouseout", function(e){
+                e.stopPropagation();
+                this.style.backgroundColor="white";
+            });
+            }
+        }); 
+        function sizer(){
+            let rand = Math.max(50, Math.round(Math.random()*75));
+            return rand/100;
+        }
+        function color(){
+            let r = Math.round(Math.random()*255);
+            let g = Math.round(Math.random()*255);
+            let b = Math.round(Math.random()*255);
+            return "rgb("+r+","+g+","+b+")"
+        }
+    </script>
+</body>
+</html>
