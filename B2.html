@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #tlo {
+        width: 500px;
+        height: 500px;
+        position: relative;
+        background-color: grey;
+        border: 2px solid black;
+        margin: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="tlo"></div>
+    <script>
+        const tlo = document.getElementById("tlo");
+
+        for (let i = 0; i <= 10; i++) {
+            let divek = document.createElement("div");
+
+            const size = Math.floor(Math.random() * (50 - 30 + 1)) + 30;
+            let top = Math.floor(Math.random() * (500 - size - 4));
+            const left = Math.floor(Math.random() * (500 - size - 4));
+
+            divek.style.position = "absolute";
+            divek.style.width = size + "px";
+            divek.style.height = size + "px";
+            divek.style.left = left + "px";
+            divek.style.top = top + "px";
+            divek.style.borderRadius = "50%";
+            divek.style.backgroundColor = "lime";
+
+            tlo.append(divek);
+
+            divek.addEventListener("click", function () {
+                const bottom = 500 - size - 4;
+                let interval = setInterval(function () {
+                    top += 2; // 🔽 stała prędkość
+
+                    if (top >= bottom) {
+                        top = bottom;
+                        clearInterval(interval);
+                    }
+
+                    divek.style.top = top + "px";
+                }, 16); // ~60 FPS
+            });
+        }
+    </script>
+
+  </body>
+</html>
