@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: rgb(128, 128, 128);
+        margin: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <script>
+        const el = document.getElementsByClassName("box");
+
+        for (let i = 0; i < el.length; i++) {
+            el[i].addEventListener("click", function () {
+
+                const color = getComputedStyle(this).backgroundColor;
+
+                if (color === "rgb(128, 128, 128)") {
+                    let r = Math.floor(Math.random() * 256);
+                    let g = Math.floor(Math.random() * 256);
+                    let b = Math.floor(Math.random() * 256);
+
+                    this.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
+                }
+            });
+            el[i].addEventListener("dblclick", function () {
+                for (let j = 0; j < el.length; j++) {
+                    el[j].style.backgroundColor = "rgb(128, 128, 128)";
+                  
+                }
+            });
+
+        }
+
+
+        
+    </script>
+
+  </body>
+</html>

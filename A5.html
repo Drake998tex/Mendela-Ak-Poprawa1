@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #pole {
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <h1>ile kwadradow</h1>
+    <input type="text" value="0" id="inpek">
+    <button id="start"></button>
+    <div id="pole"></div>
+    <script>
+        let pole = document.getElementById("pole")
+        let inp = document.getElementById("inpek")
+        let st = document.getElementById("start")
+        st.addEventListener("click", function (){
+            let ile = parseInt(inp.value)
+            for(i=0; i<=ile; i++){
+                let box= document.createElement("div")
+                let size= Math.max(10, Math.round(Math.random() * 100))
+                let left = Math.round(Math.random() * (500-size-2))
+                let top = Math.round(Math.random() * (500-size-2))
+                box.style.width = size + "px"
+                box.style.height = size + "px"
+                box.style.backgroundColor = "lime"
+                box.style.position= "absolute"
+                box.style.border = "1px solid green"
+                box.style.left= left + "px"
+                box.style.top = top + "px"
+                box.classList.add("pop")
+                pole.appendChild(box)
+            }
+            let pop = document.getElementsByClassName("pop")
+            for( let p of pop){
+                p.addEventListener("click", function() {
+                    p.remove()
+                })
+            }
+        })
+        
+    </script>
+</body>
+</html>
