@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <button id="click">Click</button>
+
+    <script>
+        let txt = "Ala ma kota, a kot ma Ale Ale Ale"
+        
+        function textStats(txt){
+            let big=0;
+            const split = txt.split(/[ ,]+/);
+            for(i=0;i<split.length;i++){
+                if(split[i].charAt(0)==split[i].charAt(0).toUpperCase()){
+                    big++;
+                }
+
+            }
+            document.write("Tekst: "+txt+"-> Słów: "+split.length+", z dużej litery: "+big);
+        }
+       document.getElementById("click").addEventListener("click", function(){textStats(txt)});
+    </script>
+</body>
+</html>

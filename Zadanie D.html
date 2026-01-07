@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    
+
+    <script>
+        let a = parseInt(prompt("Podaj liczbę A:"));
+        let b = parseInt(prompt("Podaj liczbę B:"));
+        let c = parseInt(prompt("Podaj liczbę C:"));
+
+
+        let max = Math.max(a,b,c);
+        let min = Math.min(a,b,c);
+        console.log("Maksymalna: "+max);
+        console.log("Minimalna: "+min);
+
+        if(a!=b && b!=c){
+            let sum = a+b+c;
+            let avg = sum/3
+            console.log("Średnia to: "+avg);
+        }
+
+        if(a==b||b==c||a==c){
+            console.log("Są liczby równe")
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #obszar{
+            border: 1px solid black;
+            margin: 50px;
+            width: 500px;
+            height: 500px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <label>Podaj liczbę:</label>
+    <input type="text" id="num">
+    <button id="button">Generuj</button>
+    <br>
+    <div id="obszar"></div>
+    <script>
+        const obszar = document.getElementById("obszar");
+        const button = document.getElementById("button");
+        const num = document.getElementById("num");
+        button.addEventListener("click", function(){
+            let ile = parseInt(num.value);
+            for(i=0;i<ile;i++){
+                const box = document.createElement("div");
+                let size=Math.max(10, Math.round(Math.random()*100));
+                let top = Math.round(Math.random()*(500-size-2));
+                let left = Math.round(Math.random()*(500-size-2));
+                box.style.position = "absolute";
+                box.style.border = "1px solid red";
+                box.style.backgroundColor = "salmon";
+                box.style.width = size+"px";
+                box.style.height = size+"px";
+                box.style.left = left+"px";
+                box.style.top = top+"px";
+                box.className = "pop";
+                obszar.appendChild(box);
+            }
+            let pop = document.getElementsByClassName("pop");
+        for(let p of pop){
+            p.addEventListener("click", function(){
+                p.remove();
+            })
+        }
+        });
+    </script>
+</body>
+</html>
